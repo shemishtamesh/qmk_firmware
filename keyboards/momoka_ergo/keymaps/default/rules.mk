@@ -12,4 +12,5 @@ RGBLIGHT_ENABLE = yes       # Enable keyboard RGB underglow
 AUDIO_ENABLE = no           # Audio output
 SPLIT_KEYBOARD = yes
 DYNAMIC_MACRO_ENABLE = yes
+COMBO_ENABLE = yes
 

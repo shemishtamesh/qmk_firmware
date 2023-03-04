@@ -88,6 +88,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 };
 
+enum combos {
+    BRIGHTNESS_MEDIA_PREV,
+    VOLUME_MEDIA_NEXT,
+};
+const uint16_t PROGMEM media_prev_combo[] = {KC_VOLD, KC_VOLU, COMBO_END};
+const uint16_t PROGMEM media_next_combo[] = {KC_BRID, KC_BRIU, COMBO_END};
+combo_t key_combos[COMBO_COUNT] = {
+    [VOLUME_MEDIA_NEXT] = COMBO(media_prev_combo, KC_MPRV),
+    [BRIGHTNESS_MEDIA_PREV] = COMBO(media_next_combo, KC_MNXT),
+};
+
 void keyboard_post_init_user(void) {
     layer_state_set_user(layer_state);
 }

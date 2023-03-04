@@ -43,9 +43,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* Locking resynchronize hack */
 //#define LOCKING_RESYNC_ENABLE
 
+// split handadness
 #define SPLIT_USB_DETECT
 #define EE_HANDS
 
+// mouse
 #define MK_COMBINED
 #define MOUSEKEY_MAX_SPEED 4
+
+// combos
+#define COMBO_COUNT 2
 
