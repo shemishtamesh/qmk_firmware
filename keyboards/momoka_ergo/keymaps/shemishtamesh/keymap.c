@@ -88,6 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 };
 
+// combos
 enum combos {
     BRIGHTNESS_MEDIA_PREV,
     VOLUME_MEDIA_NEXT,
@@ -99,12 +100,22 @@ combo_t key_combos[COMBO_COUNT] = {
     [BRIGHTNESS_MEDIA_PREV] = COMBO(media_next_combo, KC_MNXT),
 };
 
-void keyboard_post_init_user(void) {
-    layer_state_set_user(layer_state);
+
+// dynamic macros
+bool isRecording = false;
+
+void dynamic_macro_record_start_user(void) {
+  isRecording = true;
 }
 
+void dynamic_macro_record_end_user(int8_t direction) {
+  isRecording = false;
+}
+
+
+// layer state
 layer_state_t layer_state_set_user(layer_state_t state) {
-   switch (get_highest_layer(state)) {
+    switch (get_highest_layer(state)) {
         case _BSE:
             rgblight_sethsv(0, 0, 255);
             break;
@@ -127,6 +138,15 @@ layer_state_t layer_state_set_user(layer_state_t state) {
             rgblight_sethsv(0, 50, 50);
             break;
     }
+    if (isRecording) {
+        rgblight_sethsv_range(0, 255, 255, 9, 15);
+    }
 
   return state;
+}
+
+
+// initialization
+void keyboard_post_init_user(void) {
+    layer_state_set_user(layer_state);
 }
