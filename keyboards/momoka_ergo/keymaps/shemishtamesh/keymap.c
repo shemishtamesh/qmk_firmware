@@ -31,10 +31,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_GRV,    KC_Q,     KC_W,    KC_E,    KC_R,    KC_T,                                            KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,     KC_BSLS,
         KC_ESC,    KC_A,     KC_S,    KC_D,    KC_F,    KC_G,                                            KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN,  KC_QUOT,
         KC_LSFT,   KC_Z,     KC_X,    KC_C,    KC_V,    KC_B,                                            KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT,
-        XXXXXXX,   KC_LGUI,  KC_LALT, KC_LCTL, KC_LSFT,                                                           KC_UNDS, KC_TAB,  KC_RALT, KC_RCTL,  XXXXXXX,
+        SH_MON,     KC_LGUI,  KC_LALT, KC_LCTL, KC_LSFT,                                                           KC_UNDS, KC_TAB,  KC_RALT, KC_RCTL, SH_MON,
                                                                   KC_DEL,  MO(_SET), MO(_SET), TO(_GMG),
                                                                            KC_RALT,  KC_MEH,
-                                                        TT(_NUM), KC_BSPC, TT(_NVG), KC_HYPR,  KC_ENT,   KC_SPC
+                                                        MO(_NUM), KC_BSPC, MO(_NVG), KC_HYPR,  KC_ENT,   KC_SPC
     ),
     [_NUM] = LAYOUT(
         KC_F10,  KC_F11,  KC_F12,  KC_QUES, KC_GRV,  XXXXXXX,                                    KC_LT,   KC_WFAV, KC_SLSH, KC_ASTR, KC_COMM, KC_GT,
@@ -106,10 +106,12 @@ bool isRecording = false;
 
 void dynamic_macro_record_start_user(void) {
   isRecording = true;
+  layer_state_set_user(layer_state);
 }
 
 void dynamic_macro_record_end_user(int8_t direction) {
   isRecording = false;
+  layer_state_set_user(layer_state);
 }
 
 
@@ -139,7 +141,8 @@ layer_state_t layer_state_set_user(layer_state_t state) {
             break;
     }
     if (isRecording) {
-        rgblight_sethsv_range(0, 255, 255, 9, 15);
+        rgblight_sethsv_range(226, 255, 255, 0, 3);
+        rgblight_sethsv_range(226, 255, 255, 11, 16);
     }
 
   return state;
@@ -150,3 +153,4 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 void keyboard_post_init_user(void) {
     layer_state_set_user(layer_state);
 }
+
