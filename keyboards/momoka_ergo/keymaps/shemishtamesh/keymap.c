@@ -37,14 +37,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                         MO(_NUM), KC_BSPC, MO(_NVG), KC_WREF,  KC_ENT,   KC_SPC
     ),
     [_NUM] = LAYOUT(
-        KC_F10,  KC_F11,  KC_F12,  LCTL(KC_MINS), LCTL(KC_PLUS), KC_WSTP,                                    KC_LT,   KC_WFAV, KC_SLSH, KC_ASTR, KC_COMM, KC_GT,
-        KC_F7,   KC_F8,   KC_F9,   KC_AMPR,       KC_ASTR,       KC_GRV,                                     KC_LPRN, KC_7,    KC_8,    KC_9,    KC_PLUS, KC_RPRN,
-        KC_F4,   KC_F5,   KC_F6,   KC_DLR,        KC_PERC,       KC_CIRC,                                    KC_LCBR, KC_4,    KC_5,    KC_6,    KC_MINS, KC_RCBR,
-        KC_F1,   KC_F2,   KC_F3,   KC_EXLM,       KC_AT,         KC_HASH,                                    KC_LBRC, KC_1,    KC_2,    KC_3,    KC_EQL,  KC_RBRC,
-        KC_TILD, KC_LGUI, KC_LALT, KC_LCTL,       KC_LSFT,                                                            KC_0,    KC_DOT,  KC_COMM, KC_ENT,  KC_TAB,
-                                                                          KC_NO, KC_NO,    KC_LALT, KC_RSFT,
-                                                                                 KC_NO,    KC_RALT,
-                                                                 KC_TRNS, KC_NO, KC_NO,    KC_RCTL, KC_BSPC, KC_SPC
+        KC_F10,  KC_F11,  KC_F12,  LCTL(KC_MINS), LCTL(KC_EQL), KC_WSTP,                                    KC_LT,   KC_WFAV, KC_SLSH, KC_ASTR, KC_COMM, KC_GT,
+        KC_F7,   KC_F8,   KC_F9,   KC_AMPR,       KC_ASTR,      KC_GRV,                                     KC_LPRN, KC_7,    KC_8,    KC_9,    KC_PLUS, KC_RPRN,
+        KC_F4,   KC_F5,   KC_F6,   KC_DLR,        KC_PERC,      KC_CIRC,                                    KC_LCBR, KC_4,    KC_5,    KC_6,    KC_MINS, KC_RCBR,
+        KC_F1,   KC_F2,   KC_F3,   KC_EXLM,       KC_AT,        KC_HASH,                                    KC_LBRC, KC_1,    KC_2,    KC_3,    KC_EQL,  KC_RBRC,
+        KC_TILD, KC_LGUI, KC_LALT, KC_LCTL,       KC_LSFT,                                                           KC_0,    KC_DOT,  KC_COMM, KC_ENT,  KC_TAB,
+                                                                         KC_NO, KC_NO,    KC_LALT, KC_RSFT,
+                                                                                KC_NO,    KC_RALT,
+                                                                KC_TRNS, KC_NO, KC_NO,    KC_RCTL, KC_BSPC, KC_SPC
     ),
     [_NVG] = LAYOUT(
         KC_NO, KC_NO,   KC_NO,   KC_NO,      KC_NO,       KC_NO,                                    KC_NO,   KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_NO,
