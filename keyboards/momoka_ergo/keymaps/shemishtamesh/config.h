@@ -26,7 +26,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SELECT_SOFT_SERIAL_SPEED 5
 
 #define RGB_DI_PIN C7
-#define RGBLED_NUM 22
+#define RGBLIGHT_LED_COUNT 22
 #define RGBLIGHT_EFFECT_BREATHING
 #define RGBLIGHT_EFFECT_CHRISTMAS
 #define RGBLIGHT_EFFECT_KNIGHT

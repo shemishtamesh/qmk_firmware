@@ -67,7 +67,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                  KC_WREF, KC_NO,    KC_NO,       KC_NO, KC_ENT,   KC_SPC
     ),
     [_SET] = LAYOUT(
-        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_SLEP, KC_TRNS,
+        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                        KC_CAPS, KC_TRNS, KC_TRNS, KC_TRNS, KC_SLEP, KC_TRNS,
         KC_TRNS,  KC_TRNS, RGB_SAI, RGB_VAI, RGB_MOD, RGB_HUI,                                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, RGB_TOG, KC_TRNS,
         KC_TRNS,  RGB_TOG, RGB_SAD, RGB_VAD, RGB_RMOD,RGB_HUD,                                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
         MO(_RST), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, MO(_RST),
@@ -102,15 +102,30 @@ combo_t key_combos[COMBO_COUNT] = {
 
 
 // dynamic macros
-bool isRecording = false;
+bool isRecordingLeft = false;
+bool isRecordingRight = false;
 
-void dynamic_macro_record_start_user(void) {
-  isRecording = true;
+void dynamic_macro_record_start_user(int8_t direction) {
+  switch (direction) {
+    case -1:
+        isRecordingLeft = true;
+        break;
+    case 1:
+        isRecordingRight = true;
+        break;
+  }
   layer_state_set_user(layer_state);
 }
 
 void dynamic_macro_record_end_user(int8_t direction) {
-  isRecording = false;
+  switch (direction) {
+    case -1:
+        isRecordingLeft = false;
+        break;
+    case 1:
+        isRecordingRight = false;
+        break;
+  }
   layer_state_set_user(layer_state);
 }
 
@@ -140,8 +155,10 @@ layer_state_t layer_state_set_user(layer_state_t state) {
             rgblight_sethsv(0, 50, 50);
             break;
     }
-    if (isRecording) {
+    if (isRecordingLeft) {
         rgblight_sethsv_range(226, 255, 255, 0, 3);
+    }
+    if (isRecordingRight) {
         rgblight_sethsv_range(226, 255, 255, 11, 16);
     }
 
